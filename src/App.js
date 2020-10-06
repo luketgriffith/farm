@@ -28,9 +28,12 @@ class App extends Component {
       if (err) {
         console.log("errr....", err);
       } else {
-        console.log(data.Contents);
+        // console.log(data.Contents);
         this.setState({
-          pics: data.Contents.map(c => {
+          pics: data.Contents.sort((a, b) => {
+            return b.LastModified - a.LastModified;
+          }).map(c => {
+            // console.log("c...", c);
             return {
               ...c,
               url:
